@@ -4,8 +4,8 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-
-var articleOne = {
+var articles = {
+    'article-one': {
     title : 'Article One | Arun Kumar',
     heading :'Article One',
     date : 'Sep 5, 2016',
@@ -13,7 +13,30 @@ var articleOne = {
     <p>
         This is my content of my first artical.This is my content of my first artical.This is my content of my first artical.This is my content of my first artical.This is my content of my first artical.This is my content of my first artical.This is my content of my first artical.This is my content of my first artical.This is my content of my first artical.This is my content of my first artical. 
     </p>`
-};
+    },
+    'article-two': {
+    title : 'Article Two | Arun Kumar',
+    heading :'Article Two',
+    date : 'Sep 12, 2016',
+    content:`
+    <p>
+        This is my Second Article I havw Created......!!
+    </p>
+        
+    `},
+    'article-three': {
+    title : 'Article Three | Arun Kumar',
+    heading :'Article Three',
+    date : 'Sep 20, 2016',
+    content:`
+    <p>
+        This is my Third Article I havw Created......!!!
+    </p>
+        
+    `},
+    
+}
+
 function createTemplate(data){
     var title = data.title;
     var date = data.title;
@@ -39,7 +62,7 @@ var htmlTemplate = `
             </div>
             <hr/>
             <div>
-                ${heading}
+               <h1> ${heading}</h1>
             </div>
             <div>
                 ${date}
@@ -57,21 +80,14 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
-   res.send(createTemplate(articleOne));
+app.get('/:articleNmae',function(req,res){
+    //articleName = article-one
+    //articles[articlesName]
+    var articleName = req.params.articleName;
+   res.send(createTemplate(articles[articleName]));
 });
 
-app.get('/article-two',function(req,res){
-   res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
 
-app.get('/article-three',function(req,res){
-   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
-
-app.get('/artical-three',function(req,res){
-    res.send('aritical three arun is requested');
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
