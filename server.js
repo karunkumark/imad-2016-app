@@ -33,7 +33,7 @@ var articles = {
         This is my Third Article I havw Created......!!!
     </p>
         
-    `},
+    `}
     
 }
 
@@ -80,7 +80,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/:articleNmae',function(req,res){
+app.get('/:articleName',function(req,res){
     //articleName = article-one
     //articles[articlesName]
     var articleName = req.params.articleName;
