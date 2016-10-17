@@ -5,7 +5,7 @@ var element = document.getElementById('main-text');
 element.innerHTML ='New Value';
 
 var maintext = document.getElementById('madi');
-var mariginLeft = 0;
+var marginLeft = 0;
 
 function moveRight() {
     marginLeft =marginLeft + 1;
