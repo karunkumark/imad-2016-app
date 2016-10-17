@@ -4,7 +4,7 @@ var element = document.getElementById('main-text');
 
 element.innerHTML ='New Value';
 
-var maintext = document.getElementById('main-tetx');
+var maintext = document.getElementById('main-text');
 var mariginLeft = 0;
 
 function moveRight() {
